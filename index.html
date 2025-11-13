@@ -1,92 +1,83 @@
 <!doctype html>
-<html manifest="tabnotes.appcache"  type="text/cache-manifest">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0;'>
-    <title>tabNotes</title>
-    <link rel='stylesheet' href='styles/semantic.min.css'>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-okaidia.min.css">
-    <link rel='stylesheet' href='styles/main.css'>
+  <meta charset="utf-8">
+  <title>tabNotes Launcher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body id="app">
 
-    <div class="react-container">
-        <div class="app-container bpp-container" style="overflow: auto; padding-bottom: 66px; background-color: rgb(247, 247, 247);">
-            <div class="ui two column centered grid">
-                <div class="column">
-                    <h1 style="text-align: center; margin-top: 20px;">tabNotes</h1>
-                    <hr/>
-                    <p style="font-size: 20px; line-height: 28px;">
-                        This tool was inspired by this <strong><a href="http://lifehacker.com/5980134/turn-any-browser-window-into-a-quick-edit-notepad">LifeHacker article</a></strong>.
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6 font-mono">
 
-                    </p>
+  <div class="bg-white shadow-xl rounded-lg p-8 max-w-xl w-full">
 
-                    <p style="font-size: 20px; line-height: 28px;">
-                        Tab notes basically takes that same idea from LifeHacker but extends it. With tab notes, you can save your data for the duration of the time your browser is running. <strong>If you quit your browser or turn off your computer you will lose your data</strong>. But, if you refresh by mistake or want to check back on something later, rest assured it will be saved.
-                    </p>
+    <h1 class="text-3xl font-black mb-4">tabNotes</h1>
 
-                    <p style="font-size: 20px; line-height: 28px;">
-                        To get started, drag the button below to your bookmarks bar. Anytime you need to jot down notes or copy and paste stuff from a different tab, hit the bookmark button and you're off. 
-                    </p>
+    <p class="text-gray-700 mb-6 leading-relaxed">
+      A simple local scratchpad that never touches the cloud.<br>
+      Auto-downloading, zero storage, private, offline.  
+      Use the options below to launch it anytime.
+    </p>
 
-                    <pre type="foo/bar" id="data" style="display: none">
-data:text/html, <html> <body style="margin: 0; padding: 0;"> <div style="position: fixed; text-align: right; top: 10px; right: 10px; text-transform: uppercase;"> <a href="http://mottaquikarim.github.io/tabNotes/aux.html" id="save" target="_blank">Save</a> <a href="http://mottaquikarim.github.io/tabNotes/aux.html" id="load" target="_blank">Load</a> </div> <div id="content" contenteditable style="height: 100%; padding: 20px;"></div> <script> var save = document.querySelector('#save'); var href = save.getAttribute('href'); var content = document.querySelector('#content'); var isDirty = false; content.addEventListener('input', function(e) { isDirty = true; var value = e.target.innerHTML; save.setAttribute('href', href + '?' + encodeURIComponent( window.btoa( e.target.innerHTML ) )); }); save.addEventListener('click', function(e) { isDirty = false; }); window.addEventListener('message', function(e) { if ( e.data ) { content.innerHTML = window.atob( decodeURIComponent( e.data ) ); } }); window.onbeforeunload = function(e) { if ( isDirty ) { return 'Looks like you have unsaved changes. Are you sure you want to leave this page?'; } }; </script> </body> </html>
-                    </pre>
-                    <p style="font-size: 20px; line-height: 28px;text-align: center;">
-                        Drag the button below to <br/>your bookmarks toolbar.
-                        <br />
-                        <br />
-                        <a class="button green ui massive" id="tabNotes">tabNotes</a>
-                        <br />
-                        <br />
-                    </p>
+    <!-- BOOKMARKLET BUTTON (DRAG ME) -->
+    <a id="bookmarklet"
+       href="#"
+       class="block px-6 py-3 bg-blue-600 text-white font-semibold rounded-md shadow hover:bg-blue-700 cursor-move select-none mb-4 w-full text-left">
+      ➜ Drag this to your bookmarks bar
+    </a>
 
-                    <p style="font-size: 20px; line-height: 28px;">
-                        Click here to learn more about how <a target="_blank" href="https://medium.com/@the_taqquikarim/a-technique-for-saving-content-from-a-data-text-html-uri-10f045a8876d">this tool works</a>.
-                    </p>
+    <!-- CLICK TO OPEN -->
+    <button id="copyLauncher"
+       class="block px-6 py-3 bg-blue-600 text-white font-semibold rounded-md shadow hover:bg-blue-700 cursor-move select-none mb-4 w-full text-left">
+      ➜ Copy tabNotes URL
+    </button>
 
-                </div>
-            </div>
-        </div>
-    </div><!-- react container -->
+    <p class="text-gray-600 text-sm mb-4">
+      Drag the bookmarklet above to your bar, or click the button to open a new tab.
+    </p>
 
-    <div class="ui two column centered grid" style="position: fixed; bottom: 0px; width: 100%; display: block; background-color: rgb(247, 247, 247);" id="footer">
-        <div class="column" style="font-size:16px;" data-reactid=".0.2.0.0">
-            <div class="description" data-reactid=".0.2.0.0.0">
-                <span data-reactid=".0.2.0.0.0.0">Built by your boy&nbsp;</span>
-                <strong data-reactid=".0.2.0.0.0.1">
-                    <a href="https://twitter.com/the_taqquikarim" target="_blank" data-reactid=".0.2.0.0.0.1.0">Taq Karim</a>
-                </strong>
-                <span data-reactid=".0.2.0.0.0.2">&nbsp;with&nbsp;</span>
-                <strong data-reactid=".0.2.0.0.0.3">
-                    <a href="http://gitbot.co" target="_blank" data-reactid=".0.2.0.0.0.3.0">GitBot</a>
-                </strong>
-                <span data-reactid=".0.2.0.0.0.4">,&nbsp;</span>
-                <strong data-reactid=".0.2.0.0.0.3">
-                <strong data-reactid=".0.2.0.0.0.3">
-                    <a href="http://vanilla-js.com/" target="_blank" data-reactid=".0.2.0.0.0.3.0">Vanilla JS</a>
-                </strong>
-                <span data-reactid=".0.2.0.0.0.4">,&nbsp;</span>
-                <strong data-reactid=".0.2.0.0.0.3">
-                    <a href="http://chaijs.com/" target="_blank" data-reactid=".0.2.0.0.0.3.0">chai.js</a>
-                </strong>
-                <span data-reactid=".0.2.0.0.0.4">,&nbsp;</span>
-                <strong data-reactid=".0.2.0.0.0.5">pullups</strong>
-                <span data-reactid=".0.2.0.0.0.6">,&nbsp;</span>
-                <strong data-reactid=".0.2.0.0.0.7">
-                    <a href="https://play.spotify.com/track/6lMlMXL2Wk4xT2U1D09iLm" target="_blank" data-reactid=".0.2.0.0.0.7.0">la Bomba Estéreo</a>
-                </strong>
-                <span data-reactid=".0.2.0.0.0.8">,&nbsp; and a&nbsp;</span>
-                <strong data-reactid=".0.2.0.0.0.9">can of redbull.</strong>
-            </div>
-        </div>
+    <div class="flex items-center text-gray-700 text-sm">
+      Built by Taq Karim with
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+           fill="currentColor" class="ml-1 text-pink-500" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 
+              4.736 3.562-3.248 8 1.314"></path>
+      </svg>
     </div>
 
-    <script>
-        var html = document.getElementById("data").innerHTML;
-        document.querySelector('#tabNotes').setAttribute('href', html);
-    </script>
+  </div>
+
+<script>
+// ------------------------------------------------------------
+// INSERT YOUR FULL ENCODED SCRATCHPAD DATA-URL HERE
+// ------------------------------------------------------------
+const DATA_URL = `data:text/html,%3C!doctypehtml%3E%3Cmeta%20charset%3Dutf-8%3E%3Cscript%20src%3Dhttps%3A%2F%2Fcdn.tailwindcss.com%3E%3C%2Fscript%3E%3Cbody%20class%3D%22flex%20items-center%20bg-white%20flex-col%20font-mono%20h-screen%20p-4%22%3E%3Cdiv%20class%3D%22w-full%20p-4%20flex-1%20h-%5B60%25%5D%20outline-none%20overflow-auto%20text-gray-900%20whitespace-pre-wrap%22id%3Dpad%20contenteditable%3Dtrue%3EType%20or%20paste%20anything%20here...%3C%2Fdiv%3E%3Cdiv%20class%3D%22bg-white%20p-4%20bottom-0%20h-fit%20left-0%20shadow-lg%20text-base%20w-full%22id%3Dpanel%3E%3Ch1%20class%3D%22font-black%20text-2xl%22%3EtabNotes%3C%2Fh1%3E%3Cdiv%20class%3Dtext-gray-800%3EThis%20is%20a%20local%20scratchpad.%20Type%20anything.%20Closing%20or%20refreshing%20will%20ask%20%E2%80%9Csure%3F%E2%80%9D%20if%20auto%20download%20is%20enabled.%3C%2Fdiv%3E%3Cdiv%20class%3D%22flex%20items-center%20mt-2%22%3E%3Cinput%20class%3D%22focus%3Aring-2%20focus%3Aring-blue-500%20border%20border-gray-300%20flex-grow%20focus%3Aoutline-none%20px-4%20py-2%20rounded-md%20text-base%22id%3Dfilename%20placeholder%3D%22local_tabnote_%3CDATE_SAVED%3E%22%3E%3C%2Fdiv%3E%3Cdiv%20class%3D%22flex%20items-center%20mt-2%22%3E%3Cinput%20class%3D%22bg-white%20border%20border-gray-300%20focus%3Aring-2%20focus%3Aring-blue-500%20h-4%20rounded%20w-4%22id%3DautoDl%20checked%20type%3Dcheckbox%3E%20%3Clabel%20class%3D%22text-gray-800%20font-medium%20ms-2%20select-none%20text-sm%22for%3DautoDl%3EAuto%20download%20when%20navigating%20away%20from%20page%3C%2Flabel%3E%3C%2Fdiv%3E%3Cbutton%20class%3D%22mt-2%20bg-blue-600%20focus%3Aoutline-none%20focus%3Aring-2%20focus%3Aring-blue-500%20font-semibold%20hover%3Abg-blue-700%20px-6%20py-2%20rounded-md%20text-base%20text-white%22id%3DdownloadBtn%3EDownload%20notes%3C%2Fbutton%3E%3Cdiv%20class%3D%22flex%20mt-2%20align-center%22%3EBuilt%20by%20Taq%20Karim%20with%20%3Csvg%20class%3D%22ml-1%20mt-1%20text-pink-500%22fill%3DcurrentColor%20height%3D18%20viewBox%3D%220%200%2016%2016%22width%3D18%20xmlns%3Dhttp%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%3E%3Cpath%20d%3D%22M8%201.314C12.438-3.248%2023.534%204.735%208%2015-7.534%204.736%203.562-3.248%208%201.314%22fill-rule%3Devenodd%3E%3C%2Fpath%3E%3C%2Fsvg%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%3Cscript%3E!function()%7Blet%20e%3Ddocument.getElementById(%22pad%22)%2Ct%3Ddocument.getElementById(%22filename%22)%2Cn%3Ddocument.getElementById(%22autoDl%22)%2Cl%3Ddocument.getElementById(%22downloadBtn%22)%3Bfunction%20a()%7Blet%20e%3Dt.value.trim()%7C%7C%22local_tabnote%22%2Cn%3Dnew%20Date().toISOString()%3Breturn%20e%2B%22_%22%2Bn%2B%22.txt%22%7Dfunction%20d(e%2Ct)%7Blet%20n%3Dnew%20Blob(%5Bt%5D%2C%7Btype%3A%22text%2Fplain%22%7D)%2Cl%3DURL.createObjectURL(n)%2Ca%3Ddocument.createElement(%22a%22)%3Ba.href%3Dl%2Ca.download%3De%2Ca.click()%2CURL.revokeObjectURL(l)%7Dt.value%3D%22local_tabnote%22%2Cl.addEventListener(%22click%22%2C()%3D%3E%7Blet%20t%3De.textContent%3Bd(a()%2Ct)%7D)%2Cwindow.addEventListener(%22beforeunload%22%2Ct%3D%3E%7Bn.checked%26%26d(a()%2Ce.textContent)%3Blet%20l%3D%22sure%3F%22%3Breturn%20t.preventDefault()%2Ct.returnValue%3Dl%2Cl%7D)%2Cdocument.addEventListener(%22DOMContentLoaded%22%2C()%3D%3E%7Blet%20e%3Ddocument.getElementById(%22pad%22)%3Bif(e)%7Blet%20t%3Ddocument.createRange()%3Bt.selectNodeContents(e)%3Blet%20n%3Dwindow.getSelection()%3Bn.removeAllRanges()%2Cn.addRange(t)%7D%7D)%7D()%3B%3C%2Fscript%3E`;
+
+// Bookmarklet link
+const bookmarklet = document.getElementById('bookmarklet');
+bookmarklet.href = "javascript:location.href='" + DATA_URL + "'";
+
+// Click-to-open button
+document.getElementById("copyLauncher").addEventListener("click", async (e) => {
+  try {
+    await navigator.clipboard.writeText(DATA_URL);
+    // alert("Copied to clipboard! Paste into your address bar and hit Enter.");
+    e.target.classList.remove("bg-blue-600")
+    e.target.classList.remove("hover:bg-blue-700")
+    e.target.classList.add("bg-green-600")
+    e.target.classList.add("hover:bg-green-700")
+    e.target.innerHTML = "Copied! Paste into address bar and hit Enter"
+  } catch (err) {
+    //alert("Clipboard failed. Chrome requires HTTPS or localhost.");
+    e.target.innerHTML = "Copy failed"
+    e.target.classList.remove("bg-blue-600")
+    e.target.classList.remove("hover:bg-blue-700")
+    e.target.classList.add("bg-red-600")
+    e.target.classList.add("hover:bg-red-700")
+  }
+});
+</script>
+
 </body>
 </html>
+

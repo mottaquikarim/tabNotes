@@ -1,0 +1,92 @@
+<!doctype html>
+<html manifest="tabnotes.appcache"  type="text/cache-manifest">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0;'>
+    <title>tabNotes</title>
+    <link rel='stylesheet' href='styles/semantic.min.css'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-okaidia.min.css">
+    <link rel='stylesheet' href='styles/main.css'>
+</head>
+<body id="app">
+
+    <div class="react-container">
+        <div class="app-container bpp-container" style="overflow: auto; padding-bottom: 66px; background-color: rgb(247, 247, 247);">
+            <div class="ui two column centered grid">
+                <div class="column">
+                    <h1 style="text-align: center; margin-top: 20px;">tabNotes</h1>
+                    <hr/>
+                    <p style="font-size: 20px; line-height: 28px;">
+                        This tool was inspired by this <strong><a href="http://lifehacker.com/5980134/turn-any-browser-window-into-a-quick-edit-notepad">LifeHacker article</a></strong>.
+
+                    </p>
+
+                    <p style="font-size: 20px; line-height: 28px;">
+                        Tab notes basically takes that same idea from LifeHacker but extends it. With tab notes, you can save your data for the duration of the time your browser is running. <strong>If you quit your browser or turn off your computer you will lose your data</strong>. But, if you refresh by mistake or want to check back on something later, rest assured it will be saved.
+                    </p>
+
+                    <p style="font-size: 20px; line-height: 28px;">
+                        To get started, drag the button below to your bookmarks bar. Anytime you need to jot down notes or copy and paste stuff from a different tab, hit the bookmark button and you're off. 
+                    </p>
+
+                    <pre type="foo/bar" id="data" style="display: none">
+data:text/html, <html> <body style="margin: 0; padding: 0;"> <div style="position: fixed; text-align: right; top: 10px; right: 10px; text-transform: uppercase;"> <a href="http://mottaquikarim.github.io/tabNotes/aux.html" id="save" target="_blank">Save</a> <a href="http://mottaquikarim.github.io/tabNotes/aux.html" id="load" target="_blank">Load</a> </div> <div id="content" contenteditable style="height: 100%; padding: 20px;"></div> <script> var save = document.querySelector('#save'); var href = save.getAttribute('href'); var content = document.querySelector('#content'); var isDirty = false; content.addEventListener('input', function(e) { isDirty = true; var value = e.target.innerHTML; save.setAttribute('href', href + '?' + encodeURIComponent( window.btoa( e.target.innerHTML ) )); }); save.addEventListener('click', function(e) { isDirty = false; }); window.addEventListener('message', function(e) { if ( e.data ) { content.innerHTML = window.atob( decodeURIComponent( e.data ) ); } }); window.onbeforeunload = function(e) { if ( isDirty ) { return 'Looks like you have unsaved changes. Are you sure you want to leave this page?'; } }; </script> </body> </html>
+                    </pre>
+                    <p style="font-size: 20px; line-height: 28px;text-align: center;">
+                        Drag the button below to <br/>your bookmarks toolbar.
+                        <br />
+                        <br />
+                        <a class="button green ui massive" id="tabNotes">tabNotes</a>
+                        <br />
+                        <br />
+                    </p>
+
+                    <p style="font-size: 20px; line-height: 28px;">
+                        Click here to learn more about how <a target="_blank" href="https://medium.com/@the_taqquikarim/a-technique-for-saving-content-from-a-data-text-html-uri-10f045a8876d">this tool works</a>.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div><!-- react container -->
+
+    <div class="ui two column centered grid" style="position: fixed; bottom: 0px; width: 100%; display: block; background-color: rgb(247, 247, 247);" id="footer">
+        <div class="column" style="font-size:16px;" data-reactid=".0.2.0.0">
+            <div class="description" data-reactid=".0.2.0.0.0">
+                <span data-reactid=".0.2.0.0.0.0">Built by your boy&nbsp;</span>
+                <strong data-reactid=".0.2.0.0.0.1">
+                    <a href="https://twitter.com/the_taqquikarim" target="_blank" data-reactid=".0.2.0.0.0.1.0">Taq Karim</a>
+                </strong>
+                <span data-reactid=".0.2.0.0.0.2">&nbsp;with&nbsp;</span>
+                <strong data-reactid=".0.2.0.0.0.3">
+                    <a href="http://gitbot.co" target="_blank" data-reactid=".0.2.0.0.0.3.0">GitBot</a>
+                </strong>
+                <span data-reactid=".0.2.0.0.0.4">,&nbsp;</span>
+                <strong data-reactid=".0.2.0.0.0.3">
+                <strong data-reactid=".0.2.0.0.0.3">
+                    <a href="http://vanilla-js.com/" target="_blank" data-reactid=".0.2.0.0.0.3.0">Vanilla JS</a>
+                </strong>
+                <span data-reactid=".0.2.0.0.0.4">,&nbsp;</span>
+                <strong data-reactid=".0.2.0.0.0.3">
+                    <a href="http://chaijs.com/" target="_blank" data-reactid=".0.2.0.0.0.3.0">chai.js</a>
+                </strong>
+                <span data-reactid=".0.2.0.0.0.4">,&nbsp;</span>
+                <strong data-reactid=".0.2.0.0.0.5">pullups</strong>
+                <span data-reactid=".0.2.0.0.0.6">,&nbsp;</span>
+                <strong data-reactid=".0.2.0.0.0.7">
+                    <a href="https://play.spotify.com/track/6lMlMXL2Wk4xT2U1D09iLm" target="_blank" data-reactid=".0.2.0.0.0.7.0">la Bomba Estéreo</a>
+                </strong>
+                <span data-reactid=".0.2.0.0.0.8">,&nbsp; and a&nbsp;</span>
+                <strong data-reactid=".0.2.0.0.0.9">can of redbull.</strong>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var html = document.getElementById("data").innerHTML;
+        document.querySelector('#tabNotes').setAttribute('href', html);
+    </script>
+</body>
+</html>
